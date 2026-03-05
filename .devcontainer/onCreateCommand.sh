@@ -1,5 +1,10 @@
 export REPOSITORY=github
 
+if [ -d "/workspaces/$REPOSITORY/.devcontainer" ]; then
+    echo "Already setup, skipping..."
+    exit 0
+fi
+
 rm --recursive --force /tmp/$REPOSITORY
 mkdir --parents /tmp/$REPOSITORY/windows
 mv --force /workspaces/$REPOSITORY/.devcontainer /tmp/$REPOSITORY/.devcontainer
@@ -46,7 +51,7 @@ cp /tmp/$REPOSITORY/windows/data.img /workspaces/$REPOSITORY/windows/data.img
     echo "    environment:"
     echo "      CPU_CORES: $(nproc --all)"
     echo "      RAM_SIZE: $(free --gibi | grep 'Mem:' | awk '{print $7}')G"
-    echo "      DISK_SIZE: $(df --human-readable --block-size G /workspaces | grep '/workspaces' | awk '{print $4}')"
+    echo "      DISK_SIZE: 513G"
     echo "      DISK2_SIZE: $(df --human-readable --block-size G /tmp | grep '/tmp' | awk '{print $4}')"
     echo "      BOOT_MODE: windows"
     echo "      TPM: Y"
@@ -76,6 +81,7 @@ cp /tmp/$REPOSITORY/windows/data.img /workspaces/$REPOSITORY/windows/data.img
     echo "      - /workspaces/$REPOSITORY:/data"
     echo "    privileged: true"
     echo "    restart: on-failure"
+    echo "    stop_grace_period: 2m"
 } > /workspaces/$REPOSITORY/windows/windows.yaml
 
 echo ""
