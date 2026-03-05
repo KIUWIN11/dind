@@ -1,6 +1,6 @@
 export REPOSITORY=github
 
-if [ -d "/workspaces/$REPOSITORY/.devcontainer" ]; then
+if [ -f "/workspaces/$REPOSITORY/windows/data.img" ]; then
     echo "Already setup, skipping..."
     exit 0
 fi
