@@ -3,6 +3,10 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "containerEnv": {
+        "GPU": "Y",
+        "GPU_NAME": "Adreno 730"
+    },
     "mounts": [
         "source=var-lib-docker,target=/var/lib/docker,type=volume"
     ],
