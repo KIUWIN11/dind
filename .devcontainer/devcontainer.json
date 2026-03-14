@@ -3,6 +3,10 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "hostRequirements": {
+        "cpus": 4,
+        "memory": "16gb"
+    },
     "containerEnv": {
         "GPU": "Y",
         "GPU_NAME": "Adreno 730"
