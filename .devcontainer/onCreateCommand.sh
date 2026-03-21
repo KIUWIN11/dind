@@ -76,6 +76,7 @@ cp /tmp/$REPOSITORY/windows/data.img /workspaces/$REPOSITORY/windows/data.img
     echo "      - /workspaces/$REPOSITORY:/data"
     echo "    privileged: true"
     echo "    restart: on-failure"
+    echo "    stop_grace_period: 2m"
 } > /workspaces/$REPOSITORY/windows/windows.yaml
 
 echo ""
