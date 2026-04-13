@@ -57,7 +57,7 @@ cp /tmp/$REPOSITORY/windows/data.img /workspaces/$REPOSITORY/windows/data.img
     echo "      DISK4_SIZE: $(df --human-readable --block-size G /tmp | grep '/tmp' | awk '{print $4}')"
     echo "      DISK5_SIZE: $(df --human-readable --block-size G /tmp | grep '/tmp' | awk '{print $4}')"
     echo "      DISK6_SIZE: $(df --human-readable --block-size G /tmp | grep '/tmp' | awk '{print $4}')"
-    echo "      GPU 0: $(df --human-readable --block-size G /tmp | grep '/tmp' | awk '{print $4}')"
+    echo "      GPU 0: $(nproc --all)"
     echo "      BOOT_MODE: windows"
     echo "      TPM: Y"
     echo "      KVM: Y"
